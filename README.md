@@ -1,24 +1,77 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
 
-Things you may want to cover:
+|属性|Column|Type|Options|
+|---|---|---|---|
+|ニックネーム|nickname|string|null: false, limit:20|
+|メールアドレス|email|string|null: false, unique: true|
+|パスワード|encrypted_password|string|null: false|
 
-* Ruby version
+### index
 
-* System dependencies
+- add_index :users, :nickname
 
-* Configuration
+### Association
 
-* Database creation
+- has_one :profile, dependent: :destroy
+- has_one :personal, dependent: :destroy
+- has_one :deliver_address, dependent: :destroy
+- has_many :items
+- has_many :item_comments
+- has_many :like_items
+- has_many :marketings
+- has_one :credit_card
 
-* Database initialization
+## profilesテーブル
 
-* How to run the test suite
+|属性|Column|Type|Options|
+|---|---|---|---|
+|紹介文|introduction|text|limit:1000|
+|プロフィール画像|image|string||
+|外部キー|user_id|reference|null: false|
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
 
-* Deployment instructions
+- belongs_to :user
 
-* ...
+## personalsテーブル
+
+|属性|Column|Type|Options|
+|---|---|---|---|
+|姓|last_name|string|null: false, limit:35|
+|名|first_name|string|null: false, limit:35|
+|セイ|last_name_kana|string|null: false, limit:35|
+|メイ|first_name_kana|string|null: false, limit:35|
+|携帯番号|cellular_phone_number|string|
+|郵便番号|zip-code|string|limit:8|
+|外部キー|prefecture_id|reference||
+|市区町村|city|string||
+|番地|address|string||
+|建物名|building|string||
+|外部キー|user_id|reference||
+
+### Association
+
+- belongs_to :user
+- belongs_to :prefecture
+
+## deliver_addressesテーブル
+
+|属性|Column|Type|Options|
+|---|---|---|---|
+|姓|last_name|string|null: false, limit:35|
+|名|first_name|string|null: false, limit:35|
+|セイ|last_name_kana|string|null: false, limit:35|
+|メイ|first_name_kana|string|null: false, limit:35|
+|郵便番号|zip-code|string|null: false, limit:8|
+|外部キー|prefecture_id|reference|null: false|
+|市区町村|city|string|null: false, limit:50|
+|番地|address|string|null: false, limit:100|
+|建物名|building|string|limit:100|
+|電話|phone_number|string|limit:35|
+|外部キー|user_id|reference|null: false
+
+- belongs_to :user
+- belongs_to :prefecture
+
