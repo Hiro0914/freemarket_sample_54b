@@ -43,12 +43,12 @@
 |名|first_name|string|null: false, limit:35|
 |セイ|last_name_kana|string|null: false, limit:35|
 |メイ|first_name_kana|string|null: false, limit:35|
-|携帯番号|cellular_phone_number|string|
 |郵便番号|zip-code|string|limit:8|
 |外部キー|prefecture_id|reference||
-|市区町村|city|string||
-|番地|address|string||
-|建物名|building|string||
+|市区町村|city|string|limit:50|
+|番地|address|string|limit:100|
+|建物名|building|string|limit:100|
+|携帯番号|cellular_phone_number|string|limit:35|
 |外部キー|user_id|reference||
 
 ### Association
