@@ -72,6 +72,7 @@
 |電話|phone_number|string|limit:35|
 |外部キー|user_id|reference|null: false
 
+### Association
+
 - belongs_to :user
 - belongs_to :prefecture
-
