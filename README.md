@@ -282,7 +282,7 @@
 
 |属性|Column|Type|Options|
 |---|---|---|---|
-|トークン|token_id|string|null: false|
+|顧客id(pay.jp)|customer_id|string|null: false|
 |ユーザーid|user_id|reference|null: false, foreign_key: true|
 
 ### Association
