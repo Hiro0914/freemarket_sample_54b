@@ -29,7 +29,7 @@
 |属性|Column|Type|Options|
 |---|---|---|---|
 |紹介文|introduction|text|limit:1000|
-|プロフィール画像|image|string||
+|プロフィール画像|avatar|string||
 |ユーザー|user_id|reference|null: false, foreign_key: true|
 
 ### Association
@@ -55,7 +55,7 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :prefecture
+- belongs_to_active_hash :prefecture
 
 ## deliver_addressesテーブル（発送元・お届け先）
 
@@ -65,7 +65,7 @@
 |名|first_name|string|null: false, limit:35|
 |セイ|last_name_kana|string|null: false, limit:35|
 |メイ|first_name_kana|string|null: false, limit:35|
-|郵便番号|zip-code|string|null: false, limit:8|
+|郵便番号|zip_code|string|null: false, limit:8|
 |都道府県|prefecture_id|reference|null: false|
 |市区町村|city|string|null: false, limit:50|
 |番地|address|string|null: false, limit:100|
@@ -76,7 +76,7 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :prefecture
+- belongs_to_active_hash :prefecture
 
 ## categoriesテーブル（カテゴリー）
 
@@ -144,7 +144,7 @@
 - has_many :item_likes
 - belongs_to :item_state
 - belongs_to :deliver_expend
-- belongs_to :prefecture
+- belongs_to_active_hash :prefecture
 - belongs_to :deliver_day
 - belongs_to :sales_state
 - belongs_to :category
@@ -193,7 +193,7 @@
 
 - has_many :items
 
-## prefecturesテーブル（都道府県）
+## prefectures [ActiveHash]（都道府県）
 
 |属性|Column|Type|Options|
 |---|---|---|---|
